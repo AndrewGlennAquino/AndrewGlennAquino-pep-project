@@ -48,15 +48,14 @@ public class SocialMediaDAO {
         } catch(SQLException e) {
             System.out.println(e.getMessage());
         }
+
         return accounts;
     }
 
     /**
      * Query account table for a specific account using username and password
-     * 
      * @param username account username to query
      * @param password account password to query
-     * 
      * @return Account object if matching record is found in account, null otherwise
      */
     public Account getAccountByUsernamePassword(String username, String password) {
@@ -87,9 +86,7 @@ public class SocialMediaDAO {
     /**
      * Insert new Account object with username and password into account table if the given account username is not blank,
      * the password is at minimum 4 cahracters long, and an existing account does not exist with the same username
-     * 
      * @param account account username and password to insert
-     * 
      * @return Account object with account_id if successful, null otherwise
      */
     public Account insertAccount(Account account) {
@@ -122,7 +119,6 @@ public class SocialMediaDAO {
 
     /**
      * Query message table for all messages
-     * 
      * @return all records in message, empty list if there are no records
      */
     public List<Message> getAllMessages() {
@@ -151,9 +147,7 @@ public class SocialMediaDAO {
 
     /**
      * Query message table for a specific message using message_id
-     * 
      * @param id message message_id to query
-     * 
      * @return Message object if matching record is found in message, null otherwise
      */
     public Message getMessageById(int id) {
@@ -183,9 +177,7 @@ public class SocialMediaDAO {
 
     /**
      * Query message table for all records of a specific account_id
-     * 
      * @param id account_id to query
-     * 
      * @return all messages of a specific account_id, empty list if there are no records
      */
     public List<Message> getAllMessageByAccountId(int id) {
@@ -216,10 +208,8 @@ public class SocialMediaDAO {
 
     /**
      * Insert new Message object with posted_by, message_text, and time_posted_epoch into message table if the given 
-     * message_text is not blank and less than 255 characters and the posted_by id matches an existing account_id
-     * 
+     * message_text is not blank and less than 255 characters and posted_by matches an existing account_id
      * @param message message posted_by, message_text, and time_posted_epoch to insert
-     * 
      * @return Message object with message_id if successful, null otherwise
      */
     public Message insertMessage(Message message) {
@@ -262,10 +252,8 @@ public class SocialMediaDAO {
     }
 
     /**
-     * Delete message with matching message_id from message table. Return null if matching message_id does not exist 
-     * 
+     * Delete message with matching message_id from message table
      * @param id message_id to delete
-     * 
      * @return deleted message object, null otherwise
      */
     public Message deleteMessageById(int id) {
@@ -287,17 +275,15 @@ public class SocialMediaDAO {
     }
 
     /**
-     * Update message with matching message_id from message table. Return null if matching message_id does not exist
-     * 
+     * Update message with matching message_id from message table
      * @param id message_id to update
      * @param newMessage new message_text to update
-     * 
      * @return updated message object, null otherwise
      */
     public Message updateMessageById(int id, String newMessage) {
         Connection conn = ConnectionUtil.getConnection();
 
-        if(newMessage.length() > 255) {
+        if(newMessage.length() > 255 || newMessage.isEmpty()) {
             return null;
         }
 
