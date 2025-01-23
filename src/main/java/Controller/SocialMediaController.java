@@ -2,7 +2,6 @@ package Controller;
 
 import Model.Account;
 import Model.Message;
-import DAO.SocialMediaDAO;
 import Service.SocialMediaService;
 
 import io.javalin.Javalin;
@@ -22,7 +21,7 @@ public class SocialMediaController {
     SocialMediaService socialMediaService;
 
     /**
-     * TODO: DOCUMENTATION
+     * Default constructor that initializes socialMediaService
      */
     public SocialMediaController() {
         socialMediaService = new SocialMediaService();
@@ -47,9 +46,9 @@ public class SocialMediaController {
     }
 
     /**
-     * TODO: DOCUMENTATION
-     * @param ctx
-     * @throws JsonProcessingException
+     * Handler to post a new account
+     * @param ctx handles HTTP requests and generates HTTP response within Javelin
+     * @throws JsonProcessingException if there is an issue converting JSON to object
      */
     private void postAccountHandler(Context ctx) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
@@ -64,9 +63,9 @@ public class SocialMediaController {
     }
 
     /**
-     * TODO: DOCUMENTATION
-     * @param ctx
-     * @throws JsonProcessingException
+     * Handler to get an existing account
+     * @param ctx handles HTTP requests and generates HTTP response within Javelin
+     * @throws JsonProcessingException if there is an issue converting JSON to object
      */
     private void getAccountHandler(Context ctx) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
@@ -81,9 +80,9 @@ public class SocialMediaController {
     }
 
     /**
-     * TODO: DOCUMENTATION
-     * @param ctx
-     * @throws JsonProcessingException
+     * Handler to post a new message
+     * @param ctx handles HTTP requests and generates HTTP response within Javelin
+     * @throws JsonProcessingException if there is an issue converting JSON to object
      */
     private void postMessageHandler(Context ctx) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
@@ -98,9 +97,9 @@ public class SocialMediaController {
     }
 
     /**
-     * TODO: DOCUMENTATION
-     * @param ctx
-     * @throws JsonProcessingException
+     * Handler to get all messages
+     * @param ctx handles HTTP requests and generates HTTP response within Javelin
+     * @throws JsonProcessingException if there is an issue converting JSON to object
      */
     private void getAllMessagesHandler(Context ctx) throws JsonProcessingException {
         List<Message> messages = socialMediaService.getAllMessages();
@@ -109,9 +108,9 @@ public class SocialMediaController {
     }
 
     /**
-     * TODO: DOCUMENTATION
-     * @param ctx
-     * @throws JsonProcessingException
+     * Handler to get a specific message
+     * @param ctx handles HTTP requests and generates HTTP response within Javelin
+     * @throws JsonProcessingException if there is an issue converting JSON to object
      */
     private void getMessageHandler(Context ctx) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
@@ -125,9 +124,9 @@ public class SocialMediaController {
     }
 
     /**
-     * TODO: DOCUMENTATION
-     * @param ctx
-     * @throws JsonProcessingException
+     * Handler to delete a specific message
+     * @param ctx handles HTTP requests and generates HTTP response within Javelin
+     * @throws JsonProcessingException if there is an issue converting JSON to object
      */
     private void deleteMessageHandler(Context ctx) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
@@ -141,9 +140,9 @@ public class SocialMediaController {
     }
 
     /**
-     * TODO: DOCUMENTATION
-     * @param ctx
-     * @throws JsonProcessingException
+     * Handler to patch a specifc message
+     * @param ctx handles HTTP requests and generates HTTP response within Javelin
+     * @throws JsonProcessingException if there is an issue converting JSON to object
      */
     private void updateMessageHandler(Context ctx) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
@@ -161,9 +160,9 @@ public class SocialMediaController {
     }
 
     /**
-     * TODO: DOCUMENTATION
-     * @param ctx
-     * @throws JsonProcessingException
+     * Handler to get all messages from a specific account
+     * @param ctx handles HTTP requests and generates HTTP response within Javelin
+     * @throws JsonProcessingException if there is an issue converting JSON to object
      */
     private void getAccountMessagesHandler(Context ctx) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
